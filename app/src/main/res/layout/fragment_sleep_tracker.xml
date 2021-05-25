@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="sleepTackerViewModel"
+            type="com.example.tracksleep.sleeptracker.SleepTrackerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="start"
+            android:enabled= "@{sleepTackerViewModel.startButtonVisible}"
+            android:onClick="@{() -> sleepTackerViewModel.onStartTracking()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:text="stop"
+            android:enabled= "@{sleepTackerViewModel.stopButtonVisible}"
+            android:onClick="@{() -> sleepTackerViewModel.onStopTracking()}"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="clear"
+            android:enabled= "@{sleepTackerViewModel.clearButtonVisible}"
+            android:onClick="@{() -> sleepTackerViewModel.onClear()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sleep_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_clear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_start" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+   </layout>

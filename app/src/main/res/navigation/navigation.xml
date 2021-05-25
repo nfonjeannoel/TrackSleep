@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/sleepTrackerFragment">
+
+    <fragment
+        android:id="@+id/sleepQualityFragment"
+        android:name="com.example.tracksleep.sleepquality.SleepQualityFragment"
+        android:label="fragment_sleep_quality"
+        tools:layout="@layout/fragment_sleep_quality" >
+        <argument
+            android:name="sleepNightKey"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_sleepQualityFragment_to_sleepTrackerFragment"
+            app:destination="@id/sleepTrackerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sleepTrackerFragment"
+        android:name="com.example.tracksleep.sleeptracker.SleepTrackerFragment"
+        android:label="SleepTrackerFragment"
+        tools:layout="@layout/fragment_sleep_tracker">
+        <action
+            android:id="@+id/action_sleepTrackerFragment_to_sleepQualityFragment"
+            app:destination="@id/sleepQualityFragment" />
+    </fragment>
+</navigation>
